@@ -201,7 +201,7 @@ function renderStatic(){
   document.getElementById('p-brains').innerHTML=`<div class="pt">NEURAL CORES</div><span class="on">●</span> Gemini 2.5 Flash<br><span style="opacity:0.3;font-size:7px">Main brain — fast reasoning</span><br><span class="on">●</span> Claude (via OpenRouter)<br><span style="opacity:0.3;font-size:7px">Heavy tasks — deep code</span><br><span class="on">●</span> Groq Whisper<br><span style="opacity:0.3;font-size:7px">Speech-to-text — free</span>`;
   document.getElementById('p-prog').innerHTML=`<div class="pt">MODULES</div><span class="lb">Voice</span><span class="bar-bg"><span class="bar-fill" style="width:95%"></span></span><span class="pc">95%</span><br><span class="lb">Exec</span><span class="bar-bg"><span class="bar-fill" style="width:90%"></span></span><span class="pc">90%</span><br><span class="lb">HUD</span><span class="bar-bg"><span class="bar-fill" style="width:85%"></span></span><span class="pc">85%</span><br><span class="lb">Search</span><span class="bar-bg"><span class="bar-fill" style="width:80%"></span></span><span class="pc">80%</span>`;
   document.getElementById('p-feat').innerHTML=`<div class="pt">CAPABILITIES</div><span class="on">●</span> Shell (any command)<br><span class="on">●</span> Autonomous Code Exec<br><span class="on">●</span> File System Control<br><span class="on">●</span> Web Search<br><span class="on">●</span> Multi-Brain Routing<br><span class="on">●</span> Voice Control<br><span class="on">●</span> Self-Correcting Agent<br><span class="on">●</span> Proactive Alerts`;
-  document.getElementById('p-goals').innerHTML=`<div class="pt">MILESTONES</div><span style="opacity:0.25">☑ Wake word detection</span><br><span style="opacity:0.25">☑ Multi-brain routing</span><br><span style="opacity:0.25">☑ Autonomous executor</span><br><span style="opacity:0.25">☑ Full shell access</span><br><span style="opacity:0.25">☑ Web search integration</span><br><span style="opacity:0.7">○ 24/7 Raspberry Pi</span>`;
+  document.getElementById('p-goals').innerHTML='';
   document.getElementById('p-comms').innerHTML=`<div class="pt">EXAMPLE COMMS</div><div class="msg-u">▸ Install flask and write an API</div><div class="msg-j">◂ EXEC: installing flask, writing app.py, testing...</div><div class="msg-u">▸ What's using my RAM?</div><div class="msg-j">◂ SHELL: ps aux --sort=-%mem | head -5</div><div class="msg-u">▸ Organize my downloads</div><div class="msg-j">◂ FILE:organize:Downloads — sorted 24 files.</div>`;
   document.getElementById('p-voice').innerHTML=`<div class="pt">VOICE COMMANDS</div>"Hey Jarvis" — Wake<br>"Install [pkg]" — SHELL<br>"Write a script..." — EXEC<br>"List my files" — FILE<br>"Search for..." — Web<br>"Kill [process]" — SHELL<br>"Update system" — apt<br>"Git push" — SHELL`;
   document.getElementById('p-arch').innerHTML=`<div class="pt">ARCHITECTURE</div>Voice → Groq Whisper (STT)<br>→ Brain Router<br>→ Gemini / Claude<br>→ Command Parser<br>─────<br>SHELL: → subprocess<br>EXEC: → autonomous agent<br>FILE: → fs operations<br>→ edge-tts → Speaker`;
@@ -303,10 +303,10 @@ animate();
 
 // PANEL GROUPS
 const GROUPS={
-  all:['p-sys','p-brains','p-prog','p-feat','p-goals','p-comms','p-voice','p-arch','p-stats','p-tasks'],
-  main:['p-sys','p-brains','p-comms','p-goals','p-tasks'],
+  all:['p-sys','p-brains','p-prog','p-feat','p-comms','p-voice','p-arch','p-stats','p-tasks'],
+  main:['p-sys','p-brains','p-comms','p-tasks'],
   intel:['p-feat','p-arch','p-voice','p-stats','p-prog'],
-  infra:['p-sys','p-brains','p-tasks','p-goals'],
+  infra:['p-sys','p-brains','p-tasks'],
   none:[]
 };
 function showG(g){document.querySelectorAll('.nb').forEach(b=>b.classList.toggle('ac',b.textContent.toLowerCase()===g));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('vis'));let d=0;(GROUPS[g]||[]).forEach(id=>{setTimeout(()=>document.getElementById(id).classList.add('vis'),d);d+=40;});}
